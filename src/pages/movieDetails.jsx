@@ -23,7 +23,7 @@ function MovieDetails() {
       .get(`https://movie-review-backend-1r30.onrender.com/api/v1/movies/${imdbId}`)
       .then((res) => setMovie(res.data))
       .catch(() => console.error("Failed to load movie"));
-  }, [id]);
+  }, [imdbId]);
 
   // 🔹 Load reviews AFTER movie is loaded
   useEffect(() => {
