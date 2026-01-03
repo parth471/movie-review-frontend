@@ -1,8 +1,6 @@
-import axios from "axios";
-
-const API_URL = "https://movie-review-backend-1r30.onrender.com/api/v1/movies";
+const BASE_URL = "https://movie-review-backend-1r30.onrender.com";
 
 export const getAllMovies = async () => {
-  const response = await axios.get(API_URL);
-  return response.data;
+  const res = await fetch(`${BASE_URL}/api/v1/movies`);
+  return res.json();
 };
