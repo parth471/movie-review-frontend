@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllMovies } from "../api/movieService";
-import movieCard from "../components/movieCard";
+import MovieCard from "../components/movieCard";
 import "./Home.css";
 
 function Home() {
@@ -29,7 +29,7 @@ function Home() {
 
       <div className="movie-grid">
         {filteredMovies.map(movie => (
-          <movieCard key={movie.imdbId} movie={movie} />
+          <MovieCard key={movie.imdbId} movie={movie} />
         ))}
       </div>
     </div>
