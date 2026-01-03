@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import "./MovieCard.css";
+import "./movieCard.css";
 
 function MovieCard({ movie }) {
   const navigate = useNavigate();
