@@ -7,12 +7,7 @@ function Home() {
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-  getAllMovies().then(data => {
-    console.log("MOVIES:", data);
-    setMovies(data);
-  });
-}, []);
+  useEffect(() => { getAllMovies().then(setMovies); }, []);
 
   const filteredMovies = movies.filter(movie =>
     movie.title.toLowerCase().includes(search.toLowerCase())
