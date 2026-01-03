@@ -1,0 +1,41 @@
+import { useEffect, useState } from "react";
+import { getAllMovies } from "../api/movieService";
+import MovieCard from "../components/MovieCard";
+import "./Home.css";
+
+function Home() {
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    getAllMovies().then(setMovies);
+  }, []);
+
+  const filteredMovies = movies.filter(movie =>
+    movie.title.toLowerCase().includes(search.toLowerCase())
+  );
+
+  return (
+    <div className="home">
+      <h1 className="page-title">🎬 Movies</h1>
+
+      {/* SEARCH BAR */}
+      <div className="search-container">
+        <input
+          type="text"
+          placeholder="Search movies..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
+      <div className="movie-grid">
+        {filteredMovies.map(movie => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Home;
