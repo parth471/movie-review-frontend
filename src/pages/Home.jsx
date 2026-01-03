@@ -31,7 +31,7 @@ function Home() {
 
       <div className="movie-grid">
         {filteredMovies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
+          <movieCard key={movie.id} movie={movie} />
         ))}
       </div>
     </div>
