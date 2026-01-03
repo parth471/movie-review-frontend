@@ -12,10 +12,15 @@ function MovieDetails() {
 
   // 🔹 Convert YouTube URL to embed URL
   const getYoutubeEmbedUrl = (url) => {
-    if (!url) return "";
-    const videoId = url.split("v=")[1];
-    return `https://www.youtube.com/embed/${videoId}`;
-  };
+  if (!url) return null;
+
+  const match = url.match(
+    /(?:youtube\.com\/.*v=|youtu\.be\/)([^&]+)/ 
+  );
+
+  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+};
+
 
   // 🔹 Load movie details
   useEffect(() => {
@@ -94,12 +99,15 @@ function MovieDetails() {
 
           {/* Trailer */}
           <div className="trailer-box">
-            <iframe
-              src={getYoutubeEmbedUrl(movie.trailerLink)}
-              title="Movie Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
+            {getYoutubeEmbedUrl(movie.trailerLink) && (
+      <iframe
+          src={getYoutubeEmbedUrl(movie.trailerLink)}
+          title="Movie Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+      />
+      )}
+
           </div>
         </div>
 
