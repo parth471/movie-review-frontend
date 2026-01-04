@@ -132,6 +132,7 @@ body {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 12px;
+  margin-bottom: 24px; 
 }
 
 .genres span {
@@ -140,6 +141,14 @@ body {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* Mobile polish */
+@media (max-width: 600px) {
+  .genres span {
+    font-size: 13px;
+    padding: 5px 12px;
+  }
 }
 
 /* ===========================
