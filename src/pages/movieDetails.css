@@ -66,14 +66,14 @@ body {
 =========================== */
 .trailer-box {
   width: 100%;
-  max-width: 900px;
+  max-width: 100%;
   aspect-ratio: 16 / 9;
   background: black;
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.7);
-  transition: transform 0.3s ease;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
+
 
 /* Desktop hover */
 @media (hover: hover) {
