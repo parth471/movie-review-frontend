@@ -10,33 +10,39 @@ function MovieDetails() {
   const [reviews, setReviews] = useState([]);
   const [reviewText, setReviewText] = useState("");
 
-  // 🔹 Convert YouTube URL to embed URL
+  /* ===========================
+     YouTube Embed Helper
+  =========================== */
   const getYoutubeEmbedUrl = (url) => {
-  if (!url) return null;
+    if (!url) return null;
 
-  const match = url.match(
-    /(?:youtube\.com\/.*v=|youtu\.be\/)([^&]+)/ 
-  );
+    const match = url.match(
+      /(?:youtube\.com\/.*v=|youtu\.be\/)([^&]+)/
+    );
 
-  return match ? `https://www.youtube.com/embed/${match[1]}` : null;
-};
+    return match ? `https://www.youtube.com/embed/${match[1]}` : null;
+  };
 
-
-  // 🔹 Load movie details
+  /* ===========================
+     Fetch Movie
+  =========================== */
   useEffect(() => {
     axios
-      .get(`https://movie-review-backend-1r30.onrender.com/api/v1/movies/${imdbId}`)
+      .get(
+        `https://movie-review-backend-1r30.onrender.com/api/v1/movies/${imdbId}`
+      )
       .then((res) => setMovie(res.data))
       .catch(() => console.error("Failed to load movie"));
   }, [imdbId]);
 
-  // 🔹 Load reviews AFTER movie is loaded
+  /* ===========================
+     Fetch Reviews
+  =========================== */
   useEffect(() => {
     if (!movie?.imdbId) return;
     fetchReviews(movie.imdbId);
   }, [movie]);
 
-  // 🔹 Fetch reviews by imdbId
   const fetchReviews = async (imdbId) => {
     try {
       const res = await fetch(
@@ -44,12 +50,14 @@ function MovieDetails() {
       );
       const data = await res.json();
       setReviews(data);
-    } catch (err) {
+    } catch {
       console.error("Failed to load reviews");
     }
   };
 
-  // 🔹 Submit review (optimistic UI)
+  /* ===========================
+     Submit Review (Optimistic UI)
+  =========================== */
   const submitReview = async () => {
     if (!reviewText.trim()) return;
 
@@ -58,24 +66,22 @@ function MovieDetails() {
       createdAt: new Date().toISOString()
     };
 
-    // 1️⃣ Update UI instantly
+    // Instant UI update
     setReviews((prev) => [newReview, ...prev]);
-
-    // 2️⃣ Clear textarea
     setReviewText("");
 
-    // 3️⃣ Save to backend
     try {
-      await fetch("https://movie-review-backend-1r30.onrender.com/api/v1/reviews", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          reviewBody: newReview.body,
-          imdbId: movie.imdbId
-        })
-      });
+      await fetch(
+        "https://movie-review-backend-1r30.onrender.com/api/v1/reviews",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            reviewBody: newReview.body,
+            imdbId: movie.imdbId
+          })
+        }
+      );
     } catch {
       console.error("Review save failed");
     }
@@ -86,10 +92,10 @@ function MovieDetails() {
   return (
     <div className="movie-page">
 
-      {/* HERO SECTION */}
+      {/* ================= HERO ================= */}
       <div className="movie-hero">
-
         <div className="media-row">
+
           {/* Poster */}
           <img
             src={movie.poster}
@@ -100,14 +106,13 @@ function MovieDetails() {
           {/* Trailer */}
           <div className="trailer-box">
             {getYoutubeEmbedUrl(movie.trailerLink) && (
-      <iframe
-          src={getYoutubeEmbedUrl(movie.trailerLink)}
-          title="Movie Trailer"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-      />
-      )}
-
+              <iframe
+                src={getYoutubeEmbedUrl(movie.trailerLink)}
+                title="Movie Trailer"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            )}
           </div>
         </div>
 
@@ -117,14 +122,14 @@ function MovieDetails() {
           <p className="release-date">{movie.releaseDate}</p>
 
           <div className="genres">
-            {movie.genres.map((g, i) => (
+            {movie.genres?.map((g, i) => (
               <span key={i}>{g}</span>
             ))}
           </div>
         </div>
       </div>
 
-      {/* REVIEW SECTION */}
+      {/* ================= REVIEW SECTION ================= */}
       <div className="review-section">
         <h2>Add a Review</h2>
 
@@ -143,10 +148,10 @@ function MovieDetails() {
 
           {reviews.map((review, index) => (
             <div
-              className="review-card"
-              key={review.id || review._id || `${index}-${review.body}`}
+              className="review-item"
+              key={review._id || `${index}-${review.body}`}
             >
-              <p>{review.body}</p>
+              {review.body}
             </div>
           ))}
         </div>
