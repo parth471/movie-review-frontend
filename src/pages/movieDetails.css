@@ -26,7 +26,6 @@ body {
 =========================== */
 .movie-hero {
   padding: 20px;
-  padding-bottom: 50px;
   background: linear-gradient(to bottom, #000, #111);
 }
 
@@ -122,8 +121,8 @@ body {
    MOVIE INFO
 =========================== */
 .movie-info {
-  margin-top: 32px;
-  margin-bottom: 32px;
+  margin-top: 24px;
+  margin-bottom: 16px;
   text-align: center;
   padding: 0 10px;
   position: relative;
