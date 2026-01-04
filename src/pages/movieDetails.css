@@ -86,20 +86,23 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 100%;
+  max-width: 720px;          
   aspect-ratio: 16 / 9;
   background: black;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  margin-bottom: 30px;
+  margin-bottom: 0;          
 }
 
 @media (max-width: 600px) {
   .trailer-box {
+    max-width: 100%;        
+    margin-bottom: 30px;     
     border-radius: 14px;
   }
 }
+
 
 .trailer-box iframe {
   display: block;
