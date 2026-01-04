@@ -76,11 +76,12 @@ body {
 
 
 /* Desktop hover */
-@media (hover: hover) {
-  .trailer-box:hover {
-    transform: scale(1.02);
+@media (max-width: 600px) {
+  .trailer-box {
+    border-radius: 14px;
   }
 }
+
 
 .trailer-box iframe {
   width: 100%;
