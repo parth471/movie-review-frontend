@@ -1,15 +1,17 @@
 /* ===========================
-   GLOBAL
+   GLOBAL RESET
 =========================== */
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   background: #0f0f0f;
   font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
+  overflow-x: hidden;
 }
 
 /* ===========================
@@ -28,19 +30,27 @@ body {
   background: linear-gradient(to bottom, #000, #111);
 }
 
-/* Larger padding on desktop */
 @media (min-width: 768px) {
   .movie-hero {
     padding: 60px 80px;
   }
 }
 
-/* Layout for poster + trailer */
+/* ===========================
+   MEDIA ROW (Poster + Trailer)
+=========================== */
 .media-row {
   display: flex;
   gap: 30px;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .media-row {
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 /* ===========================
@@ -53,11 +63,16 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover only on desktop */
 @media (hover: hover) {
   .movie-poster:hover {
     transform: scale(1.05);
     box-shadow: 0 30px 70px rgba(255, 140, 0, 0.6);
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-poster {
+    width: 180px;
   }
 }
 
@@ -72,10 +87,9 @@ body {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  margin-bottom: 16px; /* spacing below trailer */
+  margin-bottom: 30px;
 }
 
-/* Mobile polish */
 @media (max-width: 600px) {
   .trailer-box {
     border-radius: 14px;
@@ -86,6 +100,7 @@ body {
   width: 100%;
   height: 100%;
   border: none;
+  object-fit: cover;
 }
 
 /* ===========================
@@ -132,13 +147,12 @@ body {
 .review-section {
   max-width: 700px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 22px;
   background: #141414;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-/* Mobile spacing */
 @media (max-width: 600px) {
   .review-section {
     margin: 30px 12px;
@@ -167,6 +181,13 @@ body {
   color: #aaa;
 }
 
+.review-section textarea:focus {
+  outline: 2px solid #ff7a00;
+}
+
+/* ===========================
+   REVIEW BUTTON
+=========================== */
 .review-section button {
   margin-top: 15px;
   padding: 12px 32px;
@@ -179,7 +200,6 @@ body {
   transition: 0.3s ease;
 }
 
-/* Desktop hover only */
 @media (hover: hover) {
   .review-section button:hover {
     transform: translateY(-2px);
@@ -188,10 +208,18 @@ body {
 }
 
 /* ===========================
-   RESPONSIVE
+   REVIEW LIST
 =========================== */
-@media (max-width: 900px) {
-  .media-row {
-    flex-direction: column;
-  }
+.review-list {
+  margin-top: 20px;
+}
+
+.review-item {
+  background: #1c1c1c;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.95;
+  line-height: 1.5;
 }
