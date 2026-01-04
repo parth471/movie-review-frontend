@@ -40,26 +40,25 @@ body {
 /* ===========================
    MEDIA ROW (POSTER + TRAILER)
 =========================== */
+/* ===========================
+   MEDIA ROW (DESKTOP GRID)
+=========================== */
 .media-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 720px);
+  align-items: start;
   justify-content: center;
   gap: 30px;
   position: relative;
   z-index: 1;
 }
 
-/* ✅ DESKTOP FIX */
-@media (min-width: 901px) {
-  .media-row {
-    align-items: flex-start;   
-  }
-}
-
 /* Mobile layout */
 @media (max-width: 900px) {
   .media-row {
+    display: flex;
     flex-direction: column;
-    align-items: center;       
+    align-items: center;
     gap: 20px;
   }
 }
@@ -92,17 +91,15 @@ body {
    TRAILER
 =========================== */
 .trailer-box {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  max-width: 720px;          
+  max-width: 720px;
   aspect-ratio: 16 / 9;
   background: black;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-  margin-bottom: 0;          
 }
+
 
 @media (max-width: 600px) {
   .trailer-box {
