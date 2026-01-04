@@ -18,7 +18,6 @@ body {
    MOVIE PAGE WRAPPER
 =========================== */
 .movie-page {
-  min-height: 100vh;
   background: #0f0f0f;
 }
 
