@@ -119,8 +119,8 @@ body {
    MOVIE INFO
 =========================== */
 .movie-info {
-  margin-top: -70px;
-  margin-bottom: 24px;
+  margin-top: 24px;
+  margin-bottom: 28px;
   text-align: center;
   padding: 0 10px;
   position: relative;
@@ -130,14 +130,14 @@ body {
 .movie-info h1 {
   font-size: clamp(1.8rem, 5vw, 3rem);
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   letter-spacing: 0.5px;
 }
 
 .release-date {
   font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   opacity: 0.8;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 /* ===========================
@@ -149,7 +149,7 @@ body {
   gap: 8px;
   flex-wrap: wrap;
   margin-top: 14px;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
 }
 
 .genres span {
@@ -171,7 +171,7 @@ body {
    REVIEW SECTION
 =========================== */
 .review-section {
-  margin-top: -40px;
+  margin-top: 12px;
   background: #141414;
   border-radius: 22px 22px 18px 18px;
   position: relative;
