@@ -49,14 +49,14 @@
   transform: translateY(0);
 }
 
-.movie-info h3 {
+.movie-card-info h3 {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   font-weight: 600;
   margin: 0;
   line-height: 1.2;
 }
 
-.movie-info p {
+.movie-card-info p {
   font-size: clamp(0.75rem, 2vw, 0.85rem);
   opacity: 0.85;
   margin-top: 4px;
@@ -64,11 +64,11 @@
 
 
 @media (hover: hover) {
-  .movie-card::after {
+  .movie-card-card::after {
     opacity: 0;
   }
 
-  .movie-info {
+  .movie-card-info {
     opacity: 0;
     transform: translateY(15px);
     transition: opacity 0.3s ease, transform 0.3s ease;
