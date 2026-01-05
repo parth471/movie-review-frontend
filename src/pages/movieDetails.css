@@ -118,7 +118,7 @@ body {
    MOVIE INFO
 =========================== */
 .movie-info {
-  margin-top: -80px;
+  margin-top: -40px;
   margin-bottom: 16px;
   text-align: center;
   padding: 0 10px;
@@ -170,7 +170,7 @@ body {
    REVIEW SECTION
 =========================== */
 .review-section {
-  margin-top: -120px;
+  margin-top: -80px;
   background: #141414;
   border-radius: 22px 22px 18px 18px;
   position: relative;
