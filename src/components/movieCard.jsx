@@ -23,7 +23,7 @@ function MovieCard({ movie }) {
     >
       <img src={movie.poster} alt={movie.title} />
 
-      <div className="movie-info">
+      <div className="movie-card-info">
         <h3>{movie.title}</h3>
       </div>
     </div>
